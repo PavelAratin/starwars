@@ -1,10 +1,11 @@
 import styles from "./App.module.css";
-import cn from "classnames";
+import PeoplePage from "../PeoplePage/PeoplePage";
 
 function App() {
   return (
     <div>
-      <h1 className={cn(styles.header, styles.text)}>React</h1>
+      <h1 className={styles.header}>React</h1>
+      <PeoplePage></PeoplePage>
     </div>
   );
 }
