@@ -1,5 +1,5 @@
 import styles from "./PeopleList.module.css";
-import { getImg } from "../../constans/api";
+import { getImg } from "../../utils/utils";
 import React from "react";
 
 const PeopleList = ({ people }) => {
