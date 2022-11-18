@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./PeoplePage.module.css";
 import { SWAPI__PEOPLE } from "../../constans/api";
-import { getImg } from "../../constans/api";
 import PeopleList from "../../components/PeopleList";
 import Preloader from "../../components/Preloader";
 import ErrorMessage from "../../components/ErrorMessage";
