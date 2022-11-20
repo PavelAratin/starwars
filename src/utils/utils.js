@@ -3,3 +3,7 @@ export const imgPeople = 'https://starwars-visualguide.com/assets/img/characters
 export const getImg = (url) => {
  return `https://starwars-visualguide.com/assets/img/characters/${url.replace(/[^0-9]/g,"")}.jpg`
 }
+
+export const getPeoplePageId =(url)=>{
+  console.log(url)
+}
