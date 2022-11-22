@@ -1,0 +1,39 @@
+.UiButton_button__cCezM {
+  min-width: 100px;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: var(--font-size-small);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-bold);
+  background: none;
+  outline: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.UiButton_button__cCezM:disabled,
+.UiButton_button__cCezM:disabled:hover {
+  color: var(--color-gray);
+  background-color: transparent;
+  border-color: var(--color-gray);
+  cursor: auto;
+}
+
+.UiButton_dark__Yy5ov {
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+}
+.UiButton_dark__Yy5ov:hover {
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+.UiButton_light__m3u7Q {
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+}
+.UiButton_light__m3u7Q:hover {
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+/*# sourceMappingURL=main.5cdb1e85.css.map*/
