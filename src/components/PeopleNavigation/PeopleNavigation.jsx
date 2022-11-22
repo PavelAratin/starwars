@@ -1,33 +1,29 @@
 import styles from "./PeopleNavigation.module.css";
 import { Link } from "react-router-dom";
+import UiButton from "../UI/UiButton";
 
 const PeopleNavigation = ({ nextPage, prevPage, queryPage }) => {
-  console.log(nextPage, prevPage);
   return (
-    <div>
+    <div className={styles.container}>
       <Link
         to={`/people/?page=${Number(queryPage) - 1}`}
-        className={styles.link}
+        className={styles.buttons}
       >
-        <button
-          className={styles.buttons}
-          //если заканчиваются ссылки для прехода (в api) то отключаем кнопку
-          disabled={!prevPage}
-        >
-          Previous
-        </button>
+        <UiButton
+        text="Previous"
+        disabled={!prevPage}
+        // theme='light'
+        ></UiButton>
       </Link>
       <Link
         to={`/people/?page=${Number(queryPage) + 1}`}
-        className={styles.link}
+        className={styles.buttons}
       >
-        <button
-          //если заканчиваются ссылки для прехода (в api) то отключаем кнопку
-          className={styles.buttons}
-          disabled={!nextPage}
-        >
-          Next
-        </button>
+        <UiButton
+        text="Next"
+        disabled={!nextPage}
+        // theme='dark'
+        ></UiButton>
       </Link>
     </div>
   );
