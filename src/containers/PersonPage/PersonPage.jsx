@@ -7,6 +7,7 @@ import { getImg } from "../../utils/utils";
 import Preloader from "../../components/Preloader";
 import PersonInfo from "../../components/PersonPage/PersonInfo/PersonInfo";
 import PersonFoto from "../../components/PersonPage/PersonFoto/PersonFoto";
+import PersonLinkBack from "../../components/PersonPage/PersonLinkBack";
 
 const PersonPage = () => {
   const [displayPreloader, setDisplayPreloader] = useState(true);
@@ -61,6 +62,7 @@ const PersonPage = () => {
 
   return (
     <React.Fragment>
+      <PersonLinkBack></PersonLinkBack>
       <div className={styles.wrapper}>
         {displayPreloader ? <Preloader></Preloader> : null}
         <span className={styles.person__name}>{personName}</span>
