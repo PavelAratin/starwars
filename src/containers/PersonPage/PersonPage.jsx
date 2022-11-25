@@ -1,6 +1,7 @@
 import styles from "./PersonPage.module.css";
 import { useParams } from "react-router";
 import React, { useEffect, useState } from "react";
+
 import { SWAPI__PERSON } from "../../constans/api";
 import { getImg } from "../../utils/utils";
 
@@ -8,12 +9,14 @@ import Preloader from "../../components/Preloader";
 import PersonInfo from "../../components/PersonPage/PersonInfo/PersonInfo";
 import PersonFoto from "../../components/PersonPage/PersonFoto/PersonFoto";
 import PersonLinkBack from "../../components/PersonPage/PersonLinkBack";
+import PersonFilms from "../../components/PersonPage/PersonFilms";
 
 const PersonPage = () => {
   const [displayPreloader, setDisplayPreloader] = useState(true);
   const [personInfo, setPersonInfo] = useState([]);
   const [personName, setPersonName] = useState(null);
   const [personFoto, setPersonFoto] = useState(null);
+  const [personFilms, setPersonFilms] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -54,6 +57,7 @@ const PersonPage = () => {
         setPersonName(data.name);
         //получение фото на детальной странице
         setPersonFoto(getImg(id));
+        data.films.length && setPersonFilms(data.films);
       })
       .catch((error) => {
         console.log("Запрос не выполнился:", error);
@@ -72,6 +76,7 @@ const PersonPage = () => {
             personName={personName}
           ></PersonFoto>
           {personInfo && <PersonInfo personInfo={personInfo}></PersonInfo>}
+          {personFilms && <PersonFilms personFilms={personFilms}></PersonFilms>}
         </div>
       </div>
     </React.Fragment>
