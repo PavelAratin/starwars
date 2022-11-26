@@ -17,6 +17,7 @@ const PersonPage = () => {
   const [personName, setPersonName] = useState(null);
   const [personFoto, setPersonFoto] = useState(null);
   const [personFilms, setPersonFilms] = useState([]);
+  const [personId, setPersonId] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const PersonPage = () => {
         setPersonName(data.name);
         //получение фото на детальной странице
         setPersonFoto(getImg(id));
+        setPersonId(id);
         data.films.length && setPersonFilms(data.films);
       })
       .catch((error) => {
@@ -74,6 +76,7 @@ const PersonPage = () => {
           <PersonFoto
             personFoto={personFoto}
             personName={personName}
+            personId={personId}
           ></PersonFoto>
           {personInfo && <PersonInfo personInfo={personInfo}></PersonInfo>}
           {personFilms && <PersonFilms personFilms={personFilms}></PersonFilms>}
