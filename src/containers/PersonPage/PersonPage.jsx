@@ -1,6 +1,7 @@
 import styles from "./PersonPage.module.css";
 import { useParams } from "react-router";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { SWAPI__PERSON } from "../../constans/api";
 import { getImg } from "../../utils/utils";
@@ -18,13 +19,16 @@ const PersonPage = () => {
   const [personFoto, setPersonFoto] = useState(null);
   const [personFilms, setPersonFilms] = useState([]);
   const [personId, setPersonId] = useState(null);
+  const [personFavorite, setPersonFavorite] = useState(false);
   const { id } = useParams();
 
+  const storeDate = useSelector((state) => state.favoriteReducer);
+  
   useEffect(() => {
     fetch(`${SWAPI__PERSON}/${id}/`)
-      .then((res) => res.json())
-      .then((data) => {
-        setDisplayPreloader(false);
+    .then((res) => res.json())
+    .then((data) => {
+      setDisplayPreloader(false);
         setPersonInfo([
           {
             title: "Height",
@@ -58,6 +62,7 @@ const PersonPage = () => {
         setPersonName(data.name);
         //получение фото на детальной странице
         setPersonFoto(getImg(id));
+        storeDate[id] ? setPersonFavorite(true) : setPersonFavorite(false);
         setPersonId(id);
         data.films.length && setPersonFilms(data.films);
       })
@@ -77,6 +82,8 @@ const PersonPage = () => {
             personFoto={personFoto}
             personName={personName}
             personId={personId}
+            personFavorite={personFavorite}
+            setPersonFavorite={setPersonFavorite}
           ></PersonFoto>
           {personInfo && <PersonInfo personInfo={personInfo}></PersonInfo>}
           {personFilms && <PersonFilms personFilms={personFilms}></PersonFilms>}

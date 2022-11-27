@@ -1,27 +1,37 @@
 import styles from "./PersonFoto.module.css";
 import { useDispatch } from "react-redux";
 import { addPersonToFavorit, removePersonFavorit } from "../../../store/action";
+import iconFavorite from "./img/favorite.svg";
+import iconFavoriteFill from "./img/favorite-fill.svg";
 
-const PersonFoto = ({ personFoto, personName, personId }) => {
+const PersonFoto = ({
+  personFoto,
+  personName,
+  personId,
+  personFavorite,
+  setPersonFavorite,
+}) => {
   const dispatch = useDispatch();
-  const add = () => {
-    dispatch(
-      addPersonToFavorit({
-        [personId]: {
-          name: personName,
-          img: personFoto,
-        },
-      })
-    );
-  };
-  const remove = () => {
-    dispatch(removePersonFavorit(personId));
+  const dispatchFavoritePeople = () => {
+    if (personFavorite) {
+      dispatch(removePersonFavorit(personId));
+      setPersonFavorite(false);
+    } else {
+      dispatch(
+        addPersonToFavorit({
+          [personId]: {
+            name: personName,
+            img: personFoto,
+          },
+        })
+      );
+      setPersonFavorite(true);
+    }
   };
   return (
     <div className={styles.container}>
       <img className={styles.photo} src={personFoto} alt={personName}></img>
-      <button onClick={add}>Добавить в изранное</button>
-      <button onClick={remove}>Удалить из избранного</button>
+      <img className={styles.favorite} onClick={dispatchFavoritePeople} src={personFavorite ? iconFavoriteFill : iconFavorite} alt="add to favorite" />
     </div>
   );
 };
